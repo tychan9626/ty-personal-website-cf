@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-portfolio',
@@ -10,6 +9,21 @@ import * as bootstrap from 'bootstrap';
   imports: [NgFor, NgIf]
 })
 export class PortfolioComponent {
+
+  navLinks = [
+    { link: "#work_experience", display_name: "Work Experience" },
+    { link: "#software_projects", display_name: "Software Projects" },
+    { link: "#education", display_name: "Education" },
+    { link: "#technical_skills", display_name: "Technical Skills" },
+    { link: "#contact_me", display_name: "Contact Me" },
+  ]
+
+  externalLinks = [
+    { link: "https://github.com/tychan9626", display_name: "GitHub" },
+    { link: "https://www.linkedin.com/in/ty-chan-192b681a5/", display_name: "LinkedIn" },
+  ]
+
+
   userLegalFirstName = 'Tsz Yin';
   userLegalLastName = 'Chan';
   userLegalFullName = `${this.userLegalFirstName} ${this.userLegalLastName}`;
@@ -163,4 +177,5 @@ export class PortfolioComponent {
   navigateURL(url: string) {
     window.location.href = url;
   }
+
 }

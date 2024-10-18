@@ -43,6 +43,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.5.2",
-    "wrangler": "^0.0.0-8c7c3b56b"
+    "wrangler": "^3.81.0"
   }
 }

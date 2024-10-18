@@ -1,34 +1,58 @@
-<div class="container">
-    <!-- Header -->
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">{{ userDisplayTitleName }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/tychan9626">GitHub</a>
-                    </li>
-                </ul>
-            </div>
+<!-- Header
+<header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">{{ userDisplayTitleName }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/tychan9626">GitHub</a>
+                </li>
+            </ul>
         </div>
-    </header>
+    </div>
+</header>
+-->
+<header class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">{{ userDisplayTitleName }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li *ngFor="let nav of navLinks" class="nav-item">
+                    <a class="nav-link" href="{{ nav.link }}">{{ nav.display_name }}</a>
+                </li>
+                <li *ngFor="let nav of externalLinks" class="nav-item">
+                    <a class="nav-link" href="{{ nav.link }}" target="_blank">{{ nav.display_name }}</a>
+                </li>
+            </ul>
+            <!--
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            -->
+        </div>
+    </div>
+</header>
 
+<div class="container">
     <!-- Header -->
     <header class="py-3 text-center">
         <h1>{{ userDisplayTitleName }}</h1>
     </header>
 
     <!-- Summary -->
-    <section class="py-4">
-        <p>{{ userSummary }}</p>
-    </section>
+    <p>{{ userSummary }}</p>
 
     <!-- Work Experience -->
-    <section class="py-4">
+    <section class="py-4" id="work_experience">
         <h2>Work Experience</h2>
         <div class="card mb-3" *ngFor="let job of workExperience">
             <div class="card-body">
@@ -46,7 +70,7 @@
 
 
     <!-- Software Projects -->
-    <section class="py-4">
+    <section class="py-4" id="software_projects">
         <h2>Software Projects</h2>
         <div class="card mb-3" *ngFor="let project of softwareProjects">
             <div class="card-body">
@@ -73,7 +97,7 @@
     </section>
 
     <!-- Education -->
-    <section class="py-4">
+    <section class="py-4" id="education">
         <h2>Education</h2>
         <div class="card mb-3">
             <div class="card-body">
@@ -93,7 +117,7 @@
     </section>
 
     <!-- Technical Skills -->
-    <section class="py-4">
+    <section class="py-4" id="technical_skills">
         <h2>Technical Skills</h2>
         <div class="row">
             <div class="col-md-6">
@@ -112,28 +136,34 @@
     </section>
 
     <!-- Contact Me -->
-    <section class="py-4">
+    <section class="py-4" id="contact_me">
         <h2>Contact Me</h2>
-        <p class="text-muted"> Messages will be securely sent to me via Formspree.</p>
+        <p class="text-muted"> Messages will be securely sent to me via &nbsp;<img src="formspree.svg" height="18"
+                alt="Formspree">.</p>
         <form action="https://formspree.io/f/xvgooypl" method="POST">
             <div class="mb-3">
-                <label for="contactName" class="form-label">Your Name<span class="text-danger"> (Required)</span></label>
-                <input type="text" class="form-control" id="contactName" placeholder="Enter your name" name="name" required>
+                <label for="contactName" class="form-label">Your Name<span class="text-danger">
+                        (Required)</span></label>
+                <input type="text" class="form-control" id="contactName" placeholder="Enter your name" name="name"
+                    required>
             </div>
             <div class="mb-3">
-                <label for="contactEmail" class="form-label">Email address<span class="text-danger"> (Required)</span></label>
-                <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com" name="email" required>
+                <label for="contactEmail" class="form-label">Email address<span class="text-danger">
+                        (Required)</span></label>
+                <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com" name="email"
+                    required>
             </div>
             <div class="mb-3">
-                <label for="contactContent" class="form-label">Message<span class="text-danger"> (Required)</span></label>
+                <label for="contactContent" class="form-label">Message<span class="text-danger">
+                        (Required)</span></label>
                 <textarea class="form-control" id="contactContent" rows="3" name="message" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </section>
-
-    <!-- Footer -->
-    <footer class="py-4 text-center">
-        <p>Version 2.0 | Last updated: October 17, 2024</p>
-    </footer>
 </div>
+<footer class="bg-dark text-white text-center py-3">
+    <p>© 2024 {{ userDisplayTitleName }} | <span *ngFor="let link of externalLinks"><a href="{{ link.link }}"
+                class="text-white">{{ link.display_name}}</a> |
+        </span> Version 2.0.1 | Last updated: October 18, 2024</p>
+</footer>
