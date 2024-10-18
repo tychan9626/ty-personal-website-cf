@@ -1,0 +1,139 @@
+<div class="container">
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">{{ userDisplayTitleName }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/tychan9626">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header -->
+    <header class="py-3 text-center">
+        <h1>{{ userDisplayTitleName }}</h1>
+    </header>
+
+    <!-- Summary -->
+    <section class="py-4">
+        <p>{{ userSummary }}</p>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="py-4">
+        <h2>Work Experience</h2>
+        <div class="card mb-3" *ngFor="let job of workExperience">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ job.company }} - {{ job.period }}</h6>
+                <!--<p class="card-text">{{ job.description }}</p>-->
+                <ul>
+                    <li *ngFor="let desc of job.description">{{ desc }}</li>
+                </ul>
+                <h6>Leveraged Knowledge:</h6>
+                <code>{{ job.skills.join(", ") }}</code>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Software Projects -->
+    <section class="py-4">
+        <h2>Software Projects</h2>
+        <div class="card mb-3" *ngFor="let project of softwareProjects">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <ul>
+                    <li *ngFor="let desc of project.description">{{ desc }}</li>
+                </ul>
+                <div *ngIf="project.codeSample">
+                    <h6>Code Sample:</h6>
+                    <pre><code>{{ project.codeSample }}</code></pre>
+                </div>
+                <h6>Leveraged Knowledge:</h6>
+                <code>{{ project.skills.join(", ") }}</code>
+                <div *ngIf="project.screenCaptures.length>0">
+                    <h6>Screen Captures:</h6>
+                    <img *ngFor="let capture of project.screenCaptures" [src]="capture" class="img-thumbnail" />
+                </div>
+                <div>
+                    <h6>Action:</h6>
+                    <button class="btn btn-primary" (click)="navigateURL(project.githubLink)">View on GitHub</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="py-4">
+        <h2>Education</h2>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>{{ education.degree }}</h5>
+                <h6>{{ education.university }} - {{ education.period }}</h6>
+                <p>GPA: {{ education.gpa }}</p>
+                <h6>Featured Coursework</h6>
+                <ul>
+                    <li *ngFor="let course of education.featuredCourses">{{ course }}</li>
+                </ul>
+                <h6>Other Coursework</h6>
+                <ul>
+                    <li *ngFor="let course of education.otherCourses">{{ course }}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="py-4">
+        <h2>Technical Skills</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Proficient In:</h6>
+                <ul>
+                    <li *ngFor="let skill of technicalSkills.proficient"><code>{{ skill }}</code></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h6>Familiar With:</h6>
+                <ul>
+                    <li *ngFor="let skill of technicalSkills.familiar"><code>{{ skill }}</code></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Me -->
+    <section class="py-4">
+        <h2>Contact Me</h2>
+        <p class="text-muted"> Messages will be securely sent to me via Formspree.</p>
+        <form action="https://formspree.io/f/xvgooypl" method="POST">
+            <div class="mb-3">
+                <label for="contactName" class="form-label">Your Name<span class="text-danger"> (Required)</span></label>
+                <input type="text" class="form-control" id="contactName" placeholder="Enter your name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="contactEmail" class="form-label">Email address<span class="text-danger"> (Required)</span></label>
+                <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="contactContent" class="form-label">Message<span class="text-danger"> (Required)</span></label>
+                <textarea class="form-control" id="contactContent" rows="3" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <p>Version 2.0 | Last updated: October 17, 2024</p>
+    </footer>
+</div>

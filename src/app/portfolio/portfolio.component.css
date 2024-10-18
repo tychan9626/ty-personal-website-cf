@@ -1,0 +1,41 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+section {
+    animation: fadeIn 1s ease-in-out;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    scroll-margin-top: 65px;
+}
+
+@media (max-width: 767.98px) {
+    section {
+        scroll-margin-top: 265px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    section {
+        scroll-margin-top: 105px;
+    }
+}
+
+
+h2 {
+    color: #0056b3;
+}
+
+button:hover {
+    background-color: #ffc107;
+    transition: background-color 0.3s ease;
+}
